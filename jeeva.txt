@@ -1,0 +1,189 @@
+Xml - extensable markup lang.
+
+1) Used for data storage and transporting data.
+2) many system contains incompatible data.
+3) Exchanginging data btw incompatible sys is a time consuming task
+and data may be lost at the time of conversion.
+4) XML stores data in plain text format.They provide a s/w & h/w independent way of storing and transfering the data. 
+
+BUILDING BLOCK OF XML:
+
+1) It is made up of user defined tags two building blocks.
+       1)XML elements.
+          -XML elements are case sensitive & it should start with letters or _.
+	  -It can contain digits -,_,.
+	  -It should not start with xml/XML/Xml.
+	  -Avoid using _and .(period).
+ 	  -Xml elements should be descriptive  & simple.
+	  -Elements not uses spaces.
+       2) XML attributes.
+	  -Attribute are xtra info about elements either "" or ''.
+	  -attribute does not contain multiple values.
+          -avoid using attribute instead use as a child element.
+
+XML SYNTAX RULES:
+
+1)  START THE XML PROGRAM WITH XML PROLOG.
+      <?xml version="10" encoding="UTF-8"?>
+
+2) all xml docmts must contain 1 root element.
+
+3) xML TAGS ARE CASE SENSITIVE.
+
+4) all xml tags should have a closing tags.
+
+5) xml tags should be properly nested.
+
+6) xml attributes should be " "(double quoted).
+
+7) xml preserves white spaces.
+
+WELL FORMED XML:
+
+1) if the xml doc follows the above 7 syntax rules is called well formed xml.
+
+
+  J2SE(STANDARD EDITION)->system and n/w oriented application.
+  J2EE(ENTERPRISE EDITION)->web appl.
+  J2ME(MOBILE EDITION)
+
+J2EE ARCHITECTURE:
+
+1) Used to develop distributor,dynamic, secure,multi-threaded  web oriented application in java platform.
+2) client server architecture divided into 3 layers:
+     1) presentation layer-> where client can able to view all information,presenting information to client.
+          -in order to create presentation layer there r some lang like html,css,browser.
+          -uses client/server.
+	  -thin client,thick client are two.
+       Thin client:
+           only presentation no logic ex:only using html,static web pages.
+       Thick client:
+             combining logic in the presentation. ex:ASP,PHP,JSP.
+
+     2) Buisiness logic layer:
+           It is in server side.
+           to write this layer there are two tier componenets:
+             -web tier
+		->JSP
+		->servlet
+		->java bean
+             -enterprise tier
+		->EJB(enterprise java bean)
+
+CLIENT:
+ clients are used to raise the request.Ther can be any no. of clients
+SERVER:
+ server is a machine it contains all essential information about the project.
+ it does not process.
+ server contains container used to process the request.
+ Two types of server.
+    1) webserver -> http protocol(8080)
+        ->used to handle only http requst and http response.
+	->normal JSP servlet app is developed using web server. 
+         EX: apache tomcat(open source)-most commonly used,jetty.
+    2) application server:
+        ->in order to handle http request there is a need for some xtra protocols like smtp,pop3,thcp,ftp,etc.,provided by application server.
+	->Ex:Jboss(open source),glassfish(open source) ,ibm websphere ,bea weblogic, oracle i planet ,sun j2ee server.
+
+     3)DATA ACCESS LAYER:
+        its provided with eis tier (enterprise information sysytem)
+        it deals with databases.
+
+configuring apache tomcat with eclipse:
+   window->preference->server->runtimeenvironment->add->version 8.0.
+   -All java files should be stored in java resources->src.
+   -all html,css,jsp,js,images in webcontent.
+   -all .jar files should be stored in webcontent->WEB-INF->lib.
+   -web.xml is a deployment descriptor file-> contains info about entire project and it is the first file which will be loaded whenever the server is started.
+
+SERVLET:
+
+ -servlet is a java program used for writing business logic processing.
+ -two types:
+     ->genericServlet
+         -it is protocol independent means used for all types of protocol.
+	 -syntax:
+		public abstract class GenericServlet extends object implements Servlet,ServletConfig{}
+	 -for generic servlet we have to import "import javax.servlet.*" package;
+         -life cycle of generic servlet:
+		->init() method-Initialize
+			-optional method used for initializtion and invoked first and only once in a life cycle of program
+		->service() method
+			-mandatory method to write business logic.
+		->destroy() method
+			-optional method used for deallocation of memory.
+
+AJAX:
+
+AJAX->Asynchronous Javascript and Xml.
+-It is not a programming language,it is a technique used to create faster better and more response web application.
+-in AJAX the client interact with the application continuously and only the necessary part of the webpage is loaded.
+-in ajax application a third party called ajax engine called "xmlhttprequest" present by default in all browser and we have to anble the ajax engine using javascript.
+-On behalf of client ajax engine is responsible for interacting with the server,the server rendors the response to ajax engine
+ either as plain text or xml and displayed back to client using inner html property or dom respectively.
+
+XMLHTTPREQUEST:
+
+-five properties:
+  1)Readystate
+    -holds the status of the xmlhttprequest 
+       0-uninisialized before open method.
+       1-connection establish before send method.
+       2-request received.
+       3-processing request.
+       4-request completed response is ready.
+  2)Status
+     -http status code like 200,404,512 etc,.
+  3)Statustext
+     -returns the status text
+        200-ok
+        404-page not found
+        512-internal server error
+  4)Responsetext
+     -returns response in text.
+  5)ResponseXML:
+     -return response as xml.
+-TWO METHODS:
+   1)open() method
+   2) end() method
+One event
+   onreadystatechange event
+	-generate when ready state values are changes.
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
