@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+* {
+  box-sizing: border-box;
+}
+.column {
+       float: left;
+       width: 25%;
+       padding: 10px;
+       height: 100px; /* Should be removed. Only for demonstration */
+}
+
+.header {
+  margin: 20px;
+  border: 3px solid Gainsboro ;
+  padding: 15px;
+  height: 110px;
+   background: #ccc;
+}
+
+.imglogin{
+
+ float: left;
+  height :70px;
+  width :200px;
+  
+   background: #ccc;
+}
+
+.menu {
+margin: 20px;
+  width: 25%;
+  height: 1000px;
+  float: left;
+  padding: 15px;
+  border: 3px solid Gainsboro ;
+  background: #ccc;
+}
+
+.main {
+margin: 20px;
+  width: 70%;
+  height: 1000px;
+  float: left;
+  padding: 15px;
+  border: 3px solid Gainsboro ;
+}
+.browse {
+margin: 5px;
+  width: 600px;
+  height: 350px;
+  
+}
+
+
+
+
+</style>
+
+<link rel="stylesheet" type="text/css" href="css/update.css">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+<div class="header">
+<div class="row">
+<div class="column">
+<div class="imglogin"><img src="images/login.jpg" alt="grizzly-store" height="100%" width="100%"></div>
+</div>
+<div class="column">
+<div style="margin-left:50px;width:200px"><input type="text" name="search" placeholder="search"></div>
+</div>
+<div class="column">
+<div align="center" ><h1>Welcome admin</h1></div></div>
+<div class="column">
+  <div  align="right" >
+  <button type="submit" >LogOut</button>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="menu">
+<div style="background-color:#a6a6a6;color:white;padding:10px;">
+<b>PROFILE </b>
+<div align="right"><a href="">  edit</a>
+</div>
+</div><br/><br/>
+ <div >
+ <img src="images/rolex_watch.jpg" alt="rolex_watch" height="100%" width="100%"><br/>
+ </div><br/>
+ <b>Name</b><br/>
+ <b>ID</b><br/>
+ <b>Designation</b><br/>
+ <b>Office</b><br/>
+</div>
+
+<div class="main">
+  
+  <div class="row">
+  <div class="column">
+  <div class="browse">
+  <a href=""><img src="images/product-add.jpg" alt="rolex_watch" height="400px" width="400px"></a> </div> </div>
+  <div class="column">
+  <div  class="container" style="margin-left:300px;width:200px;">
+  <table>
+  <tr>
+  <td> <input type="text" name="search" placeholder="Enter product id"></td>
+  </tr>
+  <tr>
+  <td> <select name="category">
+    <option value="mobile">mobile</option>
+    <option value="laptop">Laptop</option>
+    <option value="watch">watch</option>
+    <option value="shirt">shirt</option>
+  </select></td>
+  </tr>
+  <tr>
+  <td> <input type="text" name="name" placeholder="Name"></td>
+  </tr>
+  <tr>
+  <td> <input type="text" name="desc" placeholder="Description"></td>
+  </tr>
+  <tr>
+  <td> <input type="text" name="desc" placeholder="price"></td>
+  </tr>
+  </table>
+  </div>
+  </div>
+  </div>
+</div>
+
+</body>
+</html>
