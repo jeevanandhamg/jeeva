@@ -1,0 +1,27 @@
+JAVA:
+
+*Understanding of jvm,jdk,jre,reason of platform independent.
+
+1).printing the values .
+
+2).reading the values.
+
+3).Array declaration and initialization.
+
+4).iteration of array and string.
+
+5).All string functions.
+
+6).OOPS concepts with example.
+
+7).Collections.
+
+8).important keyword.
+
+9).access modifiers like public , private.
+
+10).types of variables like static ,local etc,.
+
+11).Exceptional handling.
+
+12).JDBC.
