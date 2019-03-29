@@ -1,0 +1,21 @@
+
+*)web server configurations
+
+1)servlet(basics with its architeecture and layers).
+2)http servlet.
+3)all of its methods and servlet mapping in xml file.
+4)MVC pattern and architecture.
+5)JDBC connectivity(with mysql queries).
+6)pojo class or modelclass.
+7)xml.
+8)html.
+9)JSP.
+10)JSTL.
+11)Spring(core part,wiring,IOC,viewresolver).
+12)Anotations and methods used in spring(@Controller,ModelAndView).
+13)Maven project(pom.xml).
+14)appservlet configuration in xml.
+15)adding bean and dependencies in web.xml(eg:entitymanager,transaction manager).
+16)hibernate with JPA(API).
+17)hibernate java methods(persist(),find(),merge()..etc.,).
+18)Relationship(one to many ,etc.,,).
