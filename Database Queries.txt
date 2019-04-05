@@ -1,0 +1,612 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- Schema airport
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema airport
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `airport` DEFAULT CHARACTER SET latin1 ;
+-- -----------------------------------------------------
+-- Schema bhuvi
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema bhuvi
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `bhuvi` DEFAULT CHARACTER SET latin1 ;
+-- -----------------------------------------------------
+-- Schema login
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema login
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `login` DEFAULT CHARACTER SET latin1 ;
+-- -----------------------------------------------------
+-- Schema message
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema message
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `message` DEFAULT CHARACTER SET latin1 ;
+-- -----------------------------------------------------
+-- Schema payroll
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema payroll
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `payroll` DEFAULT CHARACTER SET latin1 ;
+-- -----------------------------------------------------
+-- Schema products
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema products
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `products` DEFAULT CHARACTER SET latin1 ;
+-- -----------------------------------------------------
+-- Schema test
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- Schema vendor
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema vendor
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `vendor` DEFAULT CHARACTER SET latin1 ;
+-- -----------------------------------------------------
+-- Schema grizzly_store
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema grizzly_store
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `grizzly_store` DEFAULT CHARACTER SET latin1 ;
+USE `airport` ;
+
+-- -----------------------------------------------------
+-- Table `airport`.`admin_details`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `airport`.`admin_details` (
+  `admin_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `first_name` VARCHAR(50) NOT NULL,
+  `last_name` VARCHAR(50) NOT NULL,
+  `age` INT(11) NOT NULL,
+  `gender` VARCHAR(8) NOT NULL,
+  `dob` VARCHAR(10) NOT NULL,
+  `contact` INT(11) NOT NULL,
+  `alt_contact` INT(11) NULL DEFAULT NULL,
+  `email` VARCHAR(50) NOT NULL,
+  `password` VARCHAR(15) NOT NULL,
+  `status` INT(1) NULL DEFAULT '0',
+  PRIMARY KEY (`admin_id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 3
+DEFAULT CHARACTER SET = latin1;
+
+
+-- -----------------------------------------------------
+-- Table `airport`.`manager_details`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `airport`.`manager_details` (
+  `managerid` INT(11) NOT NULL AUTO_INCREMENT,
+  `firstname` VARCHAR(50) NOT NULL,
+  `lastname` VARCHAR(50) NOT NULL,
+  `age` INT(11) NOT NULL,
+  `gender` VARCHAR(5) NOT NULL,
+  `dob` VARCHAR(10) NULL DEFAULT NULL,
+  `contact` INT(11) NOT NULL,
+  `altcontact` INT(11) NULL DEFAULT NULL,
+  `email` VARCHAR(50) NULL DEFAULT NULL,
+  `password` VARCHAR(15) NULL DEFAULT NULL,
+  `managercol` VARCHAR(45) NOT NULL,
+  `status` INT(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`managerid`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 78
+DEFAULT CHARACTER SET = latin1;
+
+
+-- -----------------------------------------------------
+-- Table `airport`.`pilot_details`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `airport`.`pilot_details` (
+  `pilot_id` INT(8) NOT NULL AUTO_INCREMENT,
+  `license_number` VARCHAR(100) NOT NULL,
+  `address1` VARCHAR(100) NOT NULL,
+  `address2` VARCHAR(100) NOT NULL,
+  `city` VARCHAR(50) NOT NULL,
+  `state` VARCHAR(50) NOT NULL,
+  `zipcode` VARCHAR(10) NOT NULL,
+  `ssn` INT(9) NOT NULL,
+  PRIMARY KEY (`pilot_id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 3
+DEFAULT CHARACTER SET = latin1;
+
+USE `bhuvi` ;
+
+-- -----------------------------------------------------
+-- Table `bhuvi`.`customer_master`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `bhuvi`.`customer_master` (
+  `CUSTOMER_ID` VARCHAR(10) NOT NULL DEFAULT '',
+  `CUSTOMER_NAME` VARCHAR(30) NOT NULL,
+  `CONTACT_NO` BIGINT(10) NULL DEFAULT NULL,
+  `CONTACT_ADD` VARCHAR(20) NULL DEFAULT NULL,
+  `DATE_OF_REGISTRATION` DATE NOT NULL,
+  `AGE` VARCHAR(15) NOT NULL,
+  PRIMARY KEY (`CUSTOMER_ID`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
+
+
+-- -----------------------------------------------------
+-- Table `bhuvi`.`library_card_master`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `bhuvi`.`library_card_master` (
+  `CARD_ID` VARCHAR(10) NOT NULL DEFAULT '',
+  `DESCRIPTION` VARCHAR(30) NOT NULL,
+  `AMOUNT` BIGINT(50) NULL DEFAULT NULL,
+  `NUMBER_OF_YEARS` BIGINT(10) NOT NULL,
+  PRIMARY KEY (`CARD_ID`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
+
+
+-- -----------------------------------------------------
+-- Table `bhuvi`.`customer_card_details`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `bhuvi`.`customer_card_details` (
+  `CUSTOMER_ID` VARCHAR(10) NOT NULL DEFAULT '',
+  `CARD_ID` VARCHAR(10) NULL DEFAULT NULL,
+  `ISSUE_DATE` DATE NOT NULL,
+  PRIMARY KEY (`CUSTOMER_ID`),
+  INDEX `MT_CTS42` (`CARD_ID` ASC),
+  CONSTRAINT `MT_CTS41`
+    FOREIGN KEY (`CUSTOMER_ID`)
+    REFERENCES `bhuvi`.`customer_master` (`CUSTOMER_ID`),
+  CONSTRAINT `MT_CTS42`
+    FOREIGN KEY (`CARD_ID`)
+    REFERENCES `bhuvi`.`library_card_master` (`CARD_ID`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
+
+
+-- -----------------------------------------------------
+-- Table `bhuvi`.`movies_master`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `bhuvi`.`movies_master` (
+  `MOVIE_ID` VARCHAR(10) NOT NULL DEFAULT '',
+  `MOVIE_NAME` VARCHAR(50) NOT NULL,
+  `RELEASE_DATE` VARCHAR(30) NOT NULL,
+  `LANGUAGE` VARCHAR(30) NULL DEFAULT NULL,
+  `RATING` INT(2) NULL DEFAULT NULL,
+  `DURATION` VARCHAR(10) NOT NULL,
+  `MOVIE_TYPE` VARCHAR(3) NULL DEFAULT NULL,
+  `MOVIE_CATEGORY` VARCHAR(20) NOT NULL,
+  `DIRECTOR` VARCHAR(20) NOT NULL,
+  `LEAD_ROLE_1` VARCHAR(3) NOT NULL,
+  `LEAD_ROLE_2` VARCHAR(4) NOT NULL,
+  `RENT_COST` BIGINT(10) NULL DEFAULT NULL,
+  PRIMARY KEY (`MOVIE_ID`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
+
+
+-- -----------------------------------------------------
+-- Table `bhuvi`.`customer_issue_details`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `bhuvi`.`customer_issue_details` (
+  `ISSUE_ID` VARCHAR(10) NOT NULL,
+  `CUSTOMER_ID` VARCHAR(10) NOT NULL,
+  `MOVIE_ID` VARCHAR(10) NULL DEFAULT NULL,
+  `ISSUE_DATE` DATE NOT NULL,
+  `RETURN_DATE` DATE NOT NULL,
+  `ACTUAL_DATE_RETURN` DATE NOT NULL,
+  PRIMARY KEY (`ISSUE_ID`),
+  INDEX `MT_Mem` (`CUSTOMER_ID` ASC),
+  INDEX `MT_Mem1` (`MOVIE_ID` ASC),
+  CONSTRAINT `MT_Mem`
+    FOREIGN KEY (`CUSTOMER_ID`)
+    REFERENCES `bhuvi`.`customer_master` (`CUSTOMER_ID`),
+  CONSTRAINT `MT_Mem1`
+    FOREIGN KEY (`MOVIE_ID`)
+    REFERENCES `bhuvi`.`movies_master` (`MOVIE_ID`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
+
+USE `login` ;
+
+-- -----------------------------------------------------
+-- Table `login`.`login`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `login`.`login` (
+  `name` VARCHAR(25) NULL DEFAULT NULL,
+  `password` VARCHAR(25) NULL DEFAULT NULL,
+  `status` VARCHAR(25) NULL DEFAULT NULL)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
+
+
+-- -----------------------------------------------------
+-- Table `login`.`payroll`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `login`.`payroll` (
+  `name` VARCHAR(25) NULL DEFAULT NULL,
+  `password` VARCHAR(25) NULL DEFAULT NULL)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
+
+
+-- -----------------------------------------------------
+-- Table `login`.`product_details`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `login`.`product_details` (
+  `product_id` VARCHAR(25) NULL DEFAULT NULL,
+  `product_category` VARCHAR(25) NULL DEFAULT NULL,
+  `product_name` VARCHAR(25) NULL DEFAULT NULL,
+  `product_description` VARCHAR(100) NULL DEFAULT NULL,
+  `product_price` VARCHAR(25) NULL DEFAULT NULL)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
+
+USE `message` ;
+
+-- -----------------------------------------------------
+-- Table `message`.`user_details`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `message`.`user_details` (
+  `id` INT(10) NOT NULL AUTO_INCREMENT,
+  `u_name` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 6
+DEFAULT CHARACTER SET = latin1;
+
+
+-- -----------------------------------------------------
+-- Table `message`.`messages`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `message`.`messages` (
+  `from_id` INT(11) NOT NULL,
+  `to_id` INT(11) NOT NULL,
+  `message` VARCHAR(45) NOT NULL,
+  `m_id` INT(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`m_id`, `from_id`, `to_id`),
+  INDEX `from_id_idx` (`from_id` ASC),
+  INDEX `to_id_idx` (`to_id` ASC),
+  CONSTRAINT `from_id`
+    FOREIGN KEY (`from_id`)
+    REFERENCES `message`.`user_details` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `to_id`
+    FOREIGN KEY (`to_id`)
+    REFERENCES `message`.`user_details` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+AUTO_INCREMENT = 153
+DEFAULT CHARACTER SET = latin1;
+
+USE `payroll` ;
+
+-- -----------------------------------------------------
+-- Table `payroll`.`address`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `payroll`.`address` (
+  `em_ad_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `ad_street` VARCHAR(30) NULL DEFAULT NULL,
+  `ad_city` VARCHAR(15) NULL DEFAULT NULL,
+  `ad_state` VARCHAR(15) NULL DEFAULT NULL,
+  `ad_pin` INT(6) NULL DEFAULT NULL,
+  `ad_country` VARCHAR(15) NULL DEFAULT NULL,
+  PRIMARY KEY (`em_ad_id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 10004
+DEFAULT CHARACTER SET = latin1;
+
+
+-- -----------------------------------------------------
+-- Table `payroll`.`department`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `payroll`.`department` (
+  `en_dp_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `dp_name` VARCHAR(15) NULL DEFAULT NULL,
+  `dp_location` VARCHAR(15) NULL DEFAULT NULL,
+  PRIMARY KEY (`en_dp_id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 31
+DEFAULT CHARACTER SET = latin1;
+
+
+-- -----------------------------------------------------
+-- Table `payroll`.`designation`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `payroll`.`designation` (
+  `em_de_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `de_name` VARCHAR(20) NULL DEFAULT NULL,
+  PRIMARY KEY (`em_de_id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 1004
+DEFAULT CHARACTER SET = latin1;
+
+
+-- -----------------------------------------------------
+-- Table `payroll`.`employee`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `payroll`.`employee` (
+  `EM_ID` INT(11) NOT NULL AUTO_INCREMENT,
+  `EM_NAME` VARCHAR(20) NULL DEFAULT NULL,
+  `EM_DOB` DATE NULL DEFAULT NULL,
+  `EM_MOBILE` INT(10) NOT NULL,
+  `EM_SALARY` DOUBLE NULL DEFAULT NULL,
+  `EM_EMAIL` VARCHAR(20) NULL DEFAULT NULL,
+  `EM_DP_FK` INT(11) NULL DEFAULT NULL,
+  `EM_AD_FK` INT(11) NOT NULL,
+  `EM_DE_FK` INT(11) NULL DEFAULT NULL,
+  `gender` CHAR(1) NULL DEFAULT NULL,
+  PRIMARY KEY (`EM_ID`),
+  UNIQUE INDEX `EM_MOBILE` (`EM_MOBILE` ASC))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
+
+
+-- -----------------------------------------------------
+-- Table `payroll`.`employee_skillset`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `payroll`.`employee_skillset` (
+  `EM_SS_ID` INT(11) NOT NULL AUTO_INCREMENT,
+  `EM_ID_FK` INT(11) NULL DEFAULT NULL,
+  `EM_SK_ID_FK` INT(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`EM_SS_ID`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
+
+
+-- -----------------------------------------------------
+-- Table `payroll`.`empolyee_skillset`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `payroll`.`empolyee_skillset` (
+  `em_ss_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `em_id_fk` INT(11) NULL DEFAULT NULL,
+  `em_sk_id_fk` INT(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`em_ss_id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 15
+DEFAULT CHARACTER SET = latin1;
+
+
+-- -----------------------------------------------------
+-- Table `payroll`.`empployee`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `payroll`.`empployee` (
+  `em_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `em_name` VARCHAR(20) NULL DEFAULT NULL,
+  `em_dob` DATE NULL DEFAULT NULL,
+  `em_mobile` INT(10) NOT NULL,
+  `em_salary` DOUBLE NULL DEFAULT NULL,
+  `em_email` VARCHAR(20) NULL DEFAULT NULL,
+  `em_dp_fk` INT(11) NULL DEFAULT NULL,
+  `em_ad_fk` INT(11) NOT NULL,
+  `em_de_fk` INT(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`em_id`),
+  UNIQUE INDEX `em_mobile` (`em_mobile` ASC))
+ENGINE = InnoDB
+AUTO_INCREMENT = 4
+DEFAULT CHARACTER SET = latin1;
+
+
+-- -----------------------------------------------------
+-- Table `payroll`.`skill`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `payroll`.`skill` (
+  `em_sk_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `sk_name` VARCHAR(10) NULL DEFAULT NULL,
+  PRIMARY KEY (`em_sk_id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 4
+DEFAULT CHARACTER SET = latin1;
+
+USE `products` ;
+
+-- -----------------------------------------------------
+-- Table `products`.`brand`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `products`.`brand` (
+  `b_id` INT(10) NOT NULL AUTO_INCREMENT,
+  `b_name` VARCHAR(25) NULL DEFAULT NULL,
+  PRIMARY KEY (`b_id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 1006
+DEFAULT CHARACTER SET = latin1;
+
+
+-- -----------------------------------------------------
+-- Table `products`.`category`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `products`.`category` (
+  `c_id` INT(10) NOT NULL AUTO_INCREMENT,
+  `c_name` VARCHAR(25) NULL DEFAULT NULL,
+  PRIMARY KEY (`c_id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 105
+DEFAULT CHARACTER SET = latin1;
+
+
+-- -----------------------------------------------------
+-- Table `products`.`login`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `products`.`login` (
+  `username` VARCHAR(25) NULL DEFAULT NULL,
+  `password` VARCHAR(25) NULL DEFAULT NULL,
+  `user_type` VARCHAR(25) NULL DEFAULT NULL,
+  `attempt` INT(11) NULL DEFAULT NULL,
+  `address` VARCHAR(255) NULL DEFAULT NULL)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
+
+
+-- -----------------------------------------------------
+-- Table `products`.`product`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `products`.`product` (
+  `p_id` INT(10) NOT NULL AUTO_INCREMENT,
+  `p_name` VARCHAR(25) NULL DEFAULT NULL,
+  `p_description` VARCHAR(500) NULL DEFAULT NULL,
+  `p_price` VARCHAR(25) NULL DEFAULT NULL,
+  `p_c_fk` INT(11) NULL DEFAULT NULL,
+  `p_b_fk` INT(11) NULL DEFAULT NULL,
+  `p_rating` VARCHAR(20) NULL DEFAULT NULL,
+  `p_availability` VARCHAR(10) NULL DEFAULT NULL,
+  PRIMARY KEY (`p_id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 5
+DEFAULT CHARACTER SET = latin1;
+
+
+-- -----------------------------------------------------
+-- Table `products`.`product_gallery`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `products`.`product_gallery` (
+  `p_id_fk` INT(10) NULL DEFAULT NULL,
+  `p_img_name` VARCHAR(255) NULL DEFAULT NULL)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
+
+USE `vendor` ;
+
+-- -----------------------------------------------------
+-- Table `vendor`.`userprofile`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `vendor`.`userprofile` (
+  `user_id` INT(11) NOT NULL,
+  `user_name` VARCHAR(45) NOT NULL,
+  `user_designation` VARCHAR(45) NOT NULL,
+  `user_office` VARCHAR(45) NOT NULL,
+  `user_image` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`user_id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
+
+
+-- -----------------------------------------------------
+-- Table `vendor`.`login`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `vendor`.`login` (
+  `username` VARCHAR(15) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
+  `user_id` INT(11) NOT NULL,
+  `attempt` INT(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`username`),
+  INDEX `user_id_idx` (`user_id` ASC),
+  CONSTRAINT `user_id`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `vendor`.`userprofile` (`user_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
+
+
+-- -----------------------------------------------------
+-- Table `vendor`.`product`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `vendor`.`product` (
+  `Product_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `product_name` VARCHAR(45) NOT NULL,
+  `product_brand` VARCHAR(45) NOT NULL,
+  `product_category` VARCHAR(45) NOT NULL,
+  `product_description` VARCHAR(45) NOT NULL,
+  `product_price` DOUBLE NOT NULL,
+  `product_rating` DOUBLE NOT NULL DEFAULT '4',
+  `product_availability` INT(11) NOT NULL DEFAULT '1',
+  `product_image` VARCHAR(45) NOT NULL,
+  `product_quantity` INT(11) NOT NULL,
+  PRIMARY KEY (`Product_id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 4
+DEFAULT CHARACTER SET = latin1;
+
+USE `grizzly_store` ;
+
+-- -----------------------------------------------------
+-- Table `grizzly_store`.`userprofile`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `grizzly_store`.`userprofile` (
+  `user_id` INT(11) NOT NULL,
+  `user_name` TEXT NOT NULL,
+  `user_designation` TEXT NOT NULL,
+  `user_office` TEXT NOT NULL,
+  `user_image` VARCHAR(50) NULL DEFAULT NULL,
+  PRIMARY KEY (`user_id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
+
+
+-- -----------------------------------------------------
+-- Table `grizzly_store`.`loginstore`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `grizzly_store`.`loginstore` (
+  `username` VARCHAR(15) NOT NULL,
+  `password` TEXT NOT NULL,
+  `user_id` INT(11) NOT NULL,
+  `failedattempt` INT(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`username`),
+  INDEX `user_id_idx` (`user_id` ASC),
+  CONSTRAINT `user_id`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `grizzly_store`.`userprofile` (`user_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
+
+
+-- -----------------------------------------------------
+-- Table `grizzly_store`.`product`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `grizzly_store`.`product` (
+  `Product_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `product_name` TEXT NOT NULL,
+  `product_brand` TEXT NOT NULL,
+  `product_category` TEXT NOT NULL,
+  `product_description` TEXT NOT NULL,
+  `product_price` DOUBLE NOT NULL,
+  `product_rating` DOUBLE NOT NULL DEFAULT '2.5',
+  `product_availability` INT(11) NOT NULL DEFAULT '1',
+  `product_image` TEXT NOT NULL,
+  PRIMARY KEY (`Product_id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 25
+DEFAULT CHARACTER SET = latin1;
+
+
+-- -----------------------------------------------------
+-- Table `grizzly_store`.`user`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `grizzly_store`.`user` (
+  `id` INT(11) NOT NULL,
+  `name` VARCHAR(255) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
