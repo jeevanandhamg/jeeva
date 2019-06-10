@@ -1,0 +1,17 @@
+SpringBoot:
+
+video link: https://www.youtube.com/watch?v=4w1j7E_9Xj0
+
+eg:
+Assume a cake,in that,
+ spring -> is like the essence in the cake to make.
+ spring boot -> is like a complete cake.
+
+All configuration and springboot application setup is in the above video link.
+
+AWS tutorial video link : https://www.youtube.com/watch?v=IT1X42D1KeA
+
+
+
+
+
