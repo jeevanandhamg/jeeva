@@ -1,0 +1,1052 @@
+diff. bt c & java:
+
+	C:								JAVA
+1) Structural oriented						1)OOPs
+2)#include<stdio.h>						2)no header files-Packages
+	header files						     import java.io.*;
+3) 32 keywords							3)49 keywords
+									no - sizeof,extern,register,signed,unsigned
+4) primitive and user						4)only primitive data type
+   defined datatype
+5) #define A 40 -- macros					5)no global declaration
+6) Pointers							6)no pointers but we can access by creating object
+
+
+	c++								java
+1) OBJECT
+    class -- blue print/template				1) No mutilple inheritance instead we have interfaces
+2) Encapsulation -- wrapping of data into single unit
+   (hiding)
+3) Abstraction -- hiding the info from class
+4) Inheritance -- accessing properties of one class into 
+  another(code reusability)
+	single,multiple,multilevel,hybrid,hiearchial 
+5) Polymorphism -- one class in many forms
+  1) static/compile polymorphism -- method/constructor/operator
+  overloading
+  2)Dynamic/runtime -- method overriding
+6) Constructor
+     ->should not have return type
+7) Destructor -- deallocation of memory(~)			2) there is no destructor,instead we have 
+									1)automatic garbage collection
+									2)System.gc()/Runtime.gc() where it automatically calls
+									protected void finalize(){
+										//contains the resources to be deallocated and invoked only once in lifecycle of program
+8)String is datatype						3)String is class/literal
+
+
+
+jdk 1.0 --oak
+2.0 -- playground
+3.0 -- kestrel
+4.0 -- merlin
+5.0 -- tiger
+6.0 -- mustang
+7.0 -- dolphin
+8.0 -- spyder
+
+
+Environmenr setup:
+ set JAVA_HOME and PATH in environment variables:thispc->rightclick->properties->advanced settings->env. var-> user var.->new
+ cmd prompt javac
+
+JDK:
+ java development kit
+	--> jre + extra tools to develop java prog.
+JVM:
+  java virtual machine
+        --> used to read and execute my byte code.
+
+JIT:
+   just intime compiler
+        --> convert byte code to native machine code.
+JRE:
+   jav runtime Environment 
+        --> support some library file to develop the prog.
+
+FUNDAMENTALS OF JAVA:
+
+package com.pack;	//package declaration
+
+//importing packages
+import java.io;
+
+//class declaration
+class Sample{
+
+public static void main(String args[])
+System.out.println("Hello World");
+
+}
+}
+
+Coding standard:
+
+1) class:
+     -->starting letter of each word should be capital
+2) method:
+     -->from second the starting letter should be capital
+3) variables:
+     -->all should be small
+     -->constant should be all in capital letters
+4) Identifiers:
+     -->Names given for classes methods variables.
+     -->start with alphabets
+	--->2 special characters _ and $ can contain numbers
+5) keywords:
+      -->49 keywords
+        --> goto or keywords of java but if we use we get compilation error
+         --> instead of goto use continue and for const use final
+          -->3 reserved words true ,flase  for boolean "null" for object
+6)DataTypes:
+       the type of value it stores.
+	1)only primitive datatypes are there:
+		1) byte
+		2)short
+		3) int 4(byte)
+		4)long 8(byte)
+		5)float 4(byte)
+		6)double 8(byte)
+		7)char 2(byte) unsigned integers
+		8)boolean 1(byte)
+7)Literal:
+	how to store the value
+		->int literal
+			1)DECIMAL LITERAL  ex:int a=33; int b=678;
+			2)Octal literal    ex:int a=01; int b=02;-->always start with "0".
+			3)Hexa decimal literal ex:int a=0x13 / 0X13;
+		-->Float literal:
+			->float a=3.15f; or 3.15F;
+		-->double literal:
+			 ->double a=3.15 or 3.14d or 3.14D;
+		-->short literal:
+			->short a=10;
+		-->long literal:
+			-> long a=10 or 10l or 10L;
+		-->byte literal:
+			-> byte b=10;
+		-->boolean literal:
+			->boolean b1=true/false;
+		-->character literal:
+			->char a='c' / a=5 / a='\u0001'(unicode representation);
+		-->String literal or class:
+			->String  s="hello" / s=null;
+8)Variables:
+     identifier used to store a value 2types:
+		-->instance variable or class variable(any variable declared inside the class and outside the method).
+			->no need to initialize it takes default value depending on datatype like ,
+												  int=short=byte=long=0;
+												  float=double=0.0;
+												   boolean=false;
+												   object=null;
+												   char='\u0000';
+		-->local variable
+			-> any var declared inside the method and compulsarly it should be initialized otherwise compilation error.
+9)access specifiers/access modifiers:
+     	-->4 access spec.
+	1)default      -->as like private but only with in package
+	2)public	-->accessed any where
+	3)private	-->only with in the class
+	4)protected	-->with in the inherited class can also in diff package
+10)Operators:
+	1)arithmatic operator -> +,-,*,/
+	2)modulus operator -> %
+	3)relational operator -> >,<,<=,>=
+	4)equality and unequality op -> ==,!=
+	5)assignment operator -> =
+	6)compound assignment operator -> +=,-=,*=,/=
+	7)increamnet/decreament ->,++,--
+	8)bitwise operator -> &,|,^,~(once complement),<<,>>
+	9)logical operator -> (&,|,!)
+	10)short circuit logical operator -> &&,||
+
+
+Execution control statements in java:
+
+1) conditional statements
+	-->if,if else
+	-->switch(exp) -->char,int,byte,short,enum,String
+		       -->arg should always be final
+			-->continue statement should  not be used
+2)Looping statement
+	-->for,while,do while.
+3)flow breaking statement
+	-->break(stop entire iteration)
+		->labeled break
+		->unlabeled break
+	-->continue(stops the current iteration)
+		->labeled continue
+		->unlabeled continue
+	-->return (transfers the control back to the calling program)
+
+ARRAYS:
+
+->int a[]={1,2,3,4};
+
+->int a[4]={1,2,3,4}; //wrong because whenever we give size we should use new keyword
+
+->int a[];
+  a[0]=1;  a[1]=2;
+
+->int[] a=new int[4];
+
+->int a[]=new int[4];
+
+->int a[]=new int[]{1,2,3,4};   //anonymous array
+
+->int a[]=new int[-4];         //throws negativeArraySize Exception
+
+->for each loop
+      for(int a1:a)		//var should be declared only in for loop of same datatype
+	sop(a1);		//for each stmt for only printing and we can't do any logic
+
+2D array:
+->int a[][]={{1,2},{3,4}};
+
+->int[][] a=new int[4][4];
+
+->int a[][]=new int[4][4];
+
+->int[] a[]=new int[4][4];    //also a correct way
+
+->int a[][]=new int[][5];			//arrays of array
+   a[0]=new int[2];
+   a[1]=new int[1];				//for this only 12 bytes will be allocated
+   a[0][0]=1; a[0][1]=2;  a[1][0]=3;
+
+
+for each for printing 2d elmts:
+   int a[][]={{1,2},{3,4}};
+     for(int a1[]:a)
+	sop(a1[0]);1,3 // sop(a1[1]); 2,4
+     for(int a2:a1)
+	sop(a2);   1,2,3,4
+
+STRING:
+
+1)String is a immutable class where we can't increase or decrease its size
+
+constructor in string class:
+ 1)String()
+ 2)String(String s);
+ 3)String(byte[] b,int start,int end);
+ 4)String(char[] c,int start,int end);
+ 5)String(byte[] b);
+ 6)String(char[] c);
+
+ex:
+ char c[]={'j','a','v','a'};
+ String s=new String(c);
+ sop(s); //java
+
+Methods:
+
+1)String to String()
+  ->string representation of object.
+  ex:	
+class A
+{
+	String s;
+	A(String s1)
+	{
+		s=s1;
+	}
+	
+	public String toString() {
+		return s;
+	}
+}
+
+public class Strings {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		A a1=new A("hello");
+		System.out.println(a1);
+	}
+
+}
+
+output:hello
+
+2) char charAt(int loc)
+	->to return a single character from the string
+3) getChars()
+	->returns group of characters.
+4) byte[] getBytes()
+	->convert bytes to string array
+5)char[] toCharArray()
+	->convert string to char array
+	String s="hello";
+	char c[]=s.toCharArray();
+6)startsWith(arg):
+	s.startsWith("he");  //true
+
+6)endsWith(arg):
+	s.endsWith("he");   //false
+7)boolean equals()
+	->checks the equality of the content.
+       ==
+       ->checks equality of object reference.
+
+8)String substring(int start),String substring(int start,int end)
+	s.substring(2,7);
+     ->here end means end-1, it will print from 2 to 6.
+
+9)int compareTo(String s)
+         compare two strings
+	if equals return 0,greater +value,lesser -value.
+10) int compareToIgnoreCase(String s)
+	same will be done but ignore case
+
+11)    ->int indexOf(char c or String),
+       ->int lastIndexOf(char c or String)
+	->int indexOf(char c or String,10) ->after the 10th position
+       ->int lastIndexOf(char c or String,10) ->after the 10th position
+	
+12) ->String toUppercase()
+    ->String toLowercase()
+    ->String trim()
+    ->String concat(String s)
+    ->String replace(char original,char replace)
+13) String[] split(String delimiter)
+
+    String s1="one.two.three";
+    String s2[]=s1.split("\\."); //if we want split by using special ncharacter then we have to use "\\"
+
+   for spliting using group of words:
+       String s="No con,no col, no give and take maoney";
+       String r="con|col|(give and take)";
+       String s1[]=s.split(r);
+	sop(s1);      -->No
+			,no 
+			,no 
+			 manoey
+14) static String format(String format,String value)
+       ex:  sop(String.format("|%5d|",4))
+		+ ->add spce before value.
+		- ->add space after value.
+		0 ->padding with 0.
+		w ->width.
+		p -> precision.
+
+15) boolean regionMatches(boolena ignorecase,int start,String value,int targetstart, int howmany)
+    ex:
+	String s="ABC Windows test";
+	s.regionMatches(true,4,"windows",0,7);  //true
+
+Wrapper class:
+  ->the class thet supports primitive datatype to perform operation on that datatype.
+  ->all wrapper class also immutable.
+  Each datatype have seperate wrapper class
+		int --->Integer
+		byte --->Byte
+		char --->Character
+		float --->Float
+		double -->Double
+		boolean --->Boolean
+		short --->Short
+		long --->Long
+
+Integer:
+	->Constructors
+		2 constructors
+			->Integer(int a)
+			   Integer i=new Integer(42);
+			   sop(i); //it prints 42  because by default INteger override toString()
+			->Integer(String s)
+			   Integer i=new Integer("42");
+			   sop(i); //it prints 42  because by default INteger override toString()
+	->Methods
+		4 important methods
+			->public static int parseInt(String s) 
+				-> converts String to datatype.
+			->public static int parseInt(String s,int radix)  
+				ex:Integer.parseInt("42",5); //ouput: 22 expl:2*5^0  + 4*5^1 = 22
+			->int intValue()
+				->coverts Integer wrapper class to int datatype
+			->static Integer valueOf(String s) 
+				->converts String to Integer Wrapper class.
+Byte,Short,Long:
+	->Constructors
+		2 constructors
+			->Byte(byte b),..
+			->Byte(String s),..
+	->same methods as Integer wrapper class for Byte,Short,Long
+
+Boolean:
+	->constructors as same above
+	->In methods if we pass string value other than true or false then it takes as false value.
+
+
+Float:
+	->constructors
+		->Float(double d)
+			Float f=new Float(3.14);
+		->Float(flaot f)
+			Float f=new Float(3.14f);
+		->Flaot(String s)
+			Float f=new Float("3.14");
+	->Methods
+		->static int compare(float f1,float f2) -> to compare two float datatype
+			float f1=3.14f,f2=3.14f;
+			if(f1==f2)  //the condition  is false so only we r using Float.compare(f1,f2)[in this case condition is true]
+		->int compareTo(Float f)   ->to compare two float wrapper class
+			Float f1=new Float(3.14);
+			Float f2=new Float(3.14);
+				f1.compareTo(f2);
+		->static boolean isNaN()
+			Float f=new Float(Math.sqrt(-4));
+			f.isNaN();
+		
+Double:
+	->constructor
+		->Double(double d)
+		->Double(String s)
+	->Methods same as all
+Character:
+	->constructor
+		->Character(char ch)
+	->Methods 
+		->static boolean isLetter(char ch);
+		->static boolean isDigit(char ch);
+		->static boolean isLetterOrDigit(char ch);
+		->static boolean isUppercase(char ch);
+		->static boolean isLowerCase(char ch);
+		->static boolean isWhiteSpace(char ch);
+AUTOBOXING UNBOXING:
+	->available only from jdk1.5
+	->automatic conversion datatype to wrapper class(AUTOBOXING) and wrapper class to datatype(UNBOXING).
+
+                 With autoboxing
+1)Integer i;
+    int j;
+    i=5;
+   j=10;
+ j=i;
+	              Without autoboxing
+1)Integer i;
+    int j;
+    i=new Integer(5);
+   j=10;
+ j=i.intValue();
+
+
+SCANNER:
+	Scanner s=new Scanner(System.in);
+	String s1=s.nextLine(); //we can get multiple word seperately with space
+	String s2=s.next();
+	int i=s.nextInt();
+
+OOPs concepts:
+
+This keyword(this):
+   ->refers to the current class reference variable.
+   ->used when parameter varibale name instance variable name are same.
+this() constructor:
+	->this() used to invoke different constructor of the same class
+	->and always it should be present in the 1st line.
+
+ex:
+class A		
+{
+A()
+{
+this(10);
+}
+A(int a)
+{
+}
+A(String s)
+{
+A()
+}
+}
+class Main
+{
+
+psvm()
+{
+A obj=new A("jeeva");
+}
+}
+
+Polymorphism:(many forms)
+	->2 types
+		->static or compile time polymorphism.
+		->dynamic or run time polymorphism
+	Method overloading:
+		->same method name but different number order of dtatype of arguments present in the same class.(no need to check return type).
+ex:
+class Overload
+{
+	void test()
+	{
+		
+	}
+	void test(int a)
+	{
+		
+	}
+	void test(int a, int b)
+	{
+		
+	}
+	void test(String a, int b)
+	{
+		
+	}
+	
+	
+}
+public class Main2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		
+		Overload obj=new Overload();
+		obj.test();
+		obj.test(10);
+		obj.test(10,20);
+		obj.test("jeeva",20);
+
+	}
+
+}
+	Constructor overloading:
+		->the same as method but here it is constructor instead of method
+
+var args:
+	->passing variable number of arguments to the method.
+	-> it should always in the last of args.
+	->In combination of normal arg and var args the var args should always at last
+	->And a method can contain only one var args.
+	->indicated with(datatype...var)
+ex:
+class Varargs
+{
+	void test(int...a)
+	{
+		
+	}
+	void test(boolean...b)
+	{
+		
+	}
+	void test(int a,String...s)
+	{
+		
+	}
+}
+public class Main1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Varargs v=new Varargs();
+		
+		v.test(1,2,3,4,5);
+		v.test(true,true,false,true);
+		v.test(10,"jeeva","nan","dha","m");
+
+	}
+
+}
+non-access specifiers:
+  static keyword:
+	->non-access specifiers
+		->it has its own restriction whereas access specifier can be applied for anything
+	->when a class is declared to be static then no need to create object
+	->only inner class can be static outer class should not be static
+	->when a method is declared to be static if it is present in the same class it is invoked by method name,different class means then invoked by classname.methodname
+	->if a variable is declared as static it will be initialized only once and invoked as variable name in the same class,classname.variablename if it is in different class
+	->static method can access only static content otherwise,we have to object an object and access
+	->static block static{} will be executed before main method
+	ex:
+   	public class Main1 {
+
+	static //executed first
+	{
+		
+	}
+	public static void main(String[] args) {
+		
+		
+	}
+
+	}
+
+    System.out.println();
+	System  -> class
+	out     -> object of PrintStream class
+	println()-> (static)method in PrintStream class
+	behind the above statement ->public class System
+				{
+					static PrintStream out;
+					static PrintStream in;
+				}
+
+   static import:
+	->available from jdk(1.5) where we can call or invoke static method and ststaic variables directly without using class name.
+		ex:
+		import static java.lang.Math.*;
+		import static java.lang.System.*;
+		double d=sqrt(16);
+		out.println(d);
+
+INHERITANCE:
+	->accessing the properties of one class in another class
+	->advantage of inheritance is code reusability
+	5 types of inheritance
+		->single
+		->multilevel
+		->hierarchial
+		->hybrid
+		->multiple(not possible in java)
+
+	SINGLE INHERITANCE:
+
+		ex:
+		class A
+		{
+			int a=120;
+		}
+		class B extends A
+		{
+			int b=130;
+		}
+		public class Main1 {
+	
+		public static void main(String[] args) {
+			B obj=new B();     //creating the object for child or derived class
+			System.out.println(obj.a);	//prints 120
+		}
+
+		}
+
+super():
+	->used to access base or parent class constructor.
+	->only in the case of base class constructor
+	->super() should be used in the first line only
+	ex:
+	class A
+	{
+
+	A()
+	{
+		System.out.println("invoked using super() method");
+	}
+
+	}
+	class B extends A
+	{
+
+	B()
+	{
+		super();
+	}
+
+	}
+	public class Main1 {
+	
+	public static void main(String[] args) {
+		B obj=new B();     //creating the object for child or derived class
+	}
+
+	}
+	output: invoked using super() method
+
+	MULTI-LEVEL INHERITANCE:
+
+	class A
+	{
+
+	}
+	class B extends A
+	{
+
+	}
+	class C extends B
+	{
+
+	}
+	public class Main1 {
+	
+	public static void main(String[] args) {
+		C obj=new C();     //creating the object for child or derived class
+	}
+
+	}
+
+super keyword:
+	for accessing  parent class variables or method.
+	class A
+	{
+	int i;
+	}
+	class B extends A
+	{
+
+	B()
+	{
+		super.i=2;
+	}
+
+	}
+	public class Main1 {
+	
+	public static void main(String[] args) {
+		B obj=new B();     //creating the object for child or derived class
+	}
+
+HOW CONSTRUCTORS ARE INVOKED IN INHERITANCE:
+	->in inheritance the constructors are always invaoked as top-down approach.
+	->first it goes to the related class constructor and check we used this or super otherwise it tries to invoke only the default constructor of the base class.
+	ex:
+	class A
+	{
+	A()
+	{
+		System.out.println("A CLASS CONSTRUCTOR");
+	}
+	}
+	class B extends A
+	{
+	
+	B()
+	{
+		System.out.println("B CLASS CONSTRUCTOR");
+	}
+	}
+	class C extends B
+	{
+	
+	C()
+	{
+		System.out.println("C CLASS CONSTRUCTOR");
+	}
+	}
+	public class Main1 {
+	
+	public static void main(String[] args) {
+		C obj=new C();  
+	}
+
+	}
+	output : A CLASS CONSTRUCTOR
+		 B CLASS CONSTRUCTOR
+		 C CLASS CONSTRUCTOR
+
+IS A RELATIONSHIP:
+	->wherever inheritance comes, that type of rellationship is called "is a relationship"
+	ex:
+	class Animal
+	{
+
+	}
+	class Dog extends Animal
+	{
+
+	}
+HAS A RELATIONSHIP:
+	ex:
+	class Wheel
+	{
+
+	}
+	class Car extends Wheel
+	{
+		Wheel obj=new Wheel();	//whenever we create an object for the extended class it is called "has a relatioship"
+	}
+DYNAMIC POLYMORPHISM:
+	METHOD OVERRIDING:
+	 ->same method name,same return type,same order and datatype of the argument present in different class and the class should be inherited.	
+		class A
+		{
+		void show()
+		{
+			System.out.println("base class method");
+		}
+		}
+		class B extends A
+		{
+
+		void show()
+		{
+		//super.show(); -> we use this inorder to invoke show() in parent class. 
+		System.out.println("derived class method");
+		}
+	
+		}
+
+		public class Main1 {
+	
+		public static void main(String[] args) {
+		B obj=new B();
+		obj.show();
+		}
+
+		} output:derived class method
+
+	 ->in order to have effective method overriding we have "dynamic method dispatch",wher we create object for the base class but we store reference of derived class.
+	 ->at compilation the compiler thinks object is created for base class only at the time of execution it knows the object contains the reference of derived class in this way we achieve runtime polymorphism
+	
+		ex:
+		class A
+		{
+		void show()
+		{
+			System.out.println("base class method");
+		}
+		}
+		class B extends A
+		{
+
+		void show()
+		{
+			System.out.println("derived class method");
+		}
+	
+		}
+		class C extends A
+		{
+
+		void show()
+		{
+			System.out.println("derived class method");
+		}
+	
+		}
+
+		public class Main1 {
+	
+		public static void main(String[] args) {
+		A a=new A(); 	//object is created for A
+		a.show();	
+		a=new B();	//now the object a refers to class B
+		a.show();
+		a=new C();	//now the object a refers to class C
+		a.show();
+		}
+		}
+		output:
+		base class method
+		derived class method
+		derived class method
+
+Final:
+ 	->non access specifier
+	->if a class is declared as final it cannot be inherited
+	->if a method is declared as final
+	->if avariable is declared as final it cannot be changed
+
+Acessors(getters) and mutators(setters):
+   ex:
+	class Employee
+	{
+	private String name;
+	private int age;
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	}
+	public class Main2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Employee obj=new Employee();
+		obj.setName("xxxx");
+		obj.setAge(21);
+		System.out.println(obj.getName()+"  "+obj.getAge());
+
+	}
+
+	}
+
+OBJECT class:
+	->it is the super class of all the classes
+	constructor:
+		->Object()
+	Methods:
+		->String toString()
+		->boolean equals(Object o)
+		->int hashCode()
+			*)return internal addrss of the value stored in the object.
+			*)if 2 objects are equal according to equals method hasCode method produces the same integer.
+		->protected void finalize()
+		->final void wait()
+		->final void wait(Long l)
+		->final void notify()
+		->final void notifyAll()
+Abstract keyword:
+	->it is a non-access specifier
+	->when a class is declared to be abstract it cannot be intanciated(Object cannot be created)
+	->when a method is declared to abstract it does not contain definition just it ends with semi-colon(;)
+	->variable cannot be abstract.
+	->A class should be declared as abstract if it contains an abstract method but not neccessarily all the abstract class should have abstract method.
+	->abstract class can also contain some normal methods
+	->the abstract class can also be inherited,at the time we have to compulsarly give the defenition of the abstract method in the inherited class or defined class itself to be abstract
+	->abstract contains the default constructor but it cannot be invoked because the object creation is not possible.
+	ex:
+	abstract class A2
+	{
+	abstract void show();
+	void show2()
+	{
+		System.out.println("normal method");
+	}
+	}
+
+	class B2 extends  A2
+	{
+	void show()
+	{
+		System.out.println("Abstract method");
+	}
+	}
+
+	public class Strings {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		B2 obj=new B2();
+		obj.show();
+		obj.show2();
+	}
+
+	}
+	output:
+		Abstract method
+		normal method
+Interface:
+	->instead of multiple inheritance we use interface
+	->interfaces are syntactically similar to classes which contains method declaration and variable declaration and initialization
+	->syntax  ->accessspecifier interface interfaceName{ 
+				method declaration or variable declaration
+							   }
+	->by default all interfaces are abstract so we cannot create object for interface.
+	->by default all interface methods are public and abstract
+	->by default all interface variables are public,static,and final
+	-> so interface variables accessed by interfacename.variablename
+	->Interface are used using implements keyword
+	->If a class implements an interface we have to compulsarily provide the definition of interface methods with public access specifier or abstract
+	->the implemented class can also contain some normal method
+	->interfaces can also be inherited
+	->in java we have 
+		*)one class extends one class
+		*)one class implements many class
+		*)one interface extends many interface
+	->An interface without any methods and variables is called "marker interface"
+		ex: serializable,clonable,remote..etc,.
+	ex:
+	Interface:
+	
+	public interface Maths {
+ 	 void arithmatic(int a,int b);
+  	int c=20;
+	}
+	
+	classes:
+	class A9 implements Maths
+	{
+
+	@Override
+	public void arithmatic(int a, int b) {
+		// TODO Auto-generated method stub
+		System.out.println(a+b+"  "+Maths.c);
+	}
+		
+	}
+	class B9 implements Maths
+	{
+
+	@Override
+	public void arithmatic(int a, int b) {
+		// TODO Auto-generated method stub
+		System.out.println(a-b+"  "+Maths.c);
+	}
+	void show()
+	{
+		System.out.println("Non implemented method");
+	}
+	
+	}
+	public class Main2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Maths m=new A9();
+		m.arithmatic(10,20);
+		m=new B9();
+		m.arithmatic(20, 10);
+		((B9) m).show();
+	}
+
+	}
+	output:
+		30  20
+		10  20
+		Non implemented method
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
